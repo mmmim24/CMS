@@ -12,19 +12,19 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Teacher Home</title>
 <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
 <header>
 <nav>
-<h1>OnlineCourseManagement</h1>
+<h1>CMS</h1>
 <section>
   <ul id = "nav">
              <li>teacher</li>
    <li><img src="teacher.png" style="height: 30px;width: 30px; margin:right;margin_top :0px"></li> 
     <li><a class = "homered" href="teacher.jsp">My Courses</a> </li>
-     <li><a class = "homeblack" href="login.jsp">Logout</a> </li>
+     <li><a class = "homeblack" href="index.html">Logout</a> </li>
     
     
   </ul>

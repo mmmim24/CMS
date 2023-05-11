@@ -12,14 +12,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Student Home</title>
 <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
 <header>
 <nav >
 
-<h1>OnlineCourseManagement</h1>
+<h1>CMS</h1>
 
 
 
@@ -29,7 +29,7 @@
    <li><img src="stu.png" style="height: 30px;width: 30px; margin:right;margin_top :0px"></li>
     <li><a class = "homered"href="#">Home</a> </li>
     <li><a class = "homeblack"href="taken_courses.jsp">ViewCourses</a> </li>
-    <li><a class = "homeblack"href="login.jsp">Logout</a> </li>
+    <li><a class = "homeblack"href="index.html">Logout</a> </li>
    
     
   </ul>
@@ -41,7 +41,7 @@
      try {
          Class.forName("com.mysql.jdbc.Driver");
          java.sql.Connection con = DriverManager.getConnection(
-                 "jdbc:mysql://localhost:3306/web", "root", "10101010");
+        		 "jdbc:mysql://localhost:3306/sql_workbench", "root", "");
 
         Statement st = con.createStatement();
          String query = "SELECT * FROM admin_input";
