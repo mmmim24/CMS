@@ -90,19 +90,21 @@ public class AddStudent extends HttpServlet {
         String se = request.getParameter("session");
         String em = request.getParameter("email");
         String pa = request.getParameter("password");
+        String red = "admin.html";
+        String database = "jdbc:mysql://localhost:3306/sql_workbench";
         
  
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection(
-            		"jdbc:mysql://localhost:3306/sql_workbench", "root", "");
+            		database, "root", "");
  
             PreparedStatement ps = con
                     .prepareStatement("insert into students values(?,?,?,?,?,?)");
             //the password is hashed before inserted into table
             pa = getSHA(pa);
-            ps.setString(1, nm);
-            ps.setString(2, re);
+            ps.setString(1, re);
+            ps.setString(2, nm);
             ps.setString(3, dp);
             ps.setString(4, se);
             ps.setString(5, em);
@@ -110,7 +112,7 @@ public class AddStudent extends HttpServlet {
  
             int i = ps.executeUpdate();
             if (i > 0)
-            	request.getRequestDispatcher("admin.jsp").forward(request,response);
+            	request.getRequestDispatcher(red).forward(request,response);
             else
                 out.print("Registration failed...");
             
@@ -123,7 +125,7 @@ public class AddStudent extends HttpServlet {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection(
-            		"jdbc:mysql://localhost:3306/sql_workbench", "root", "");
+            		database, "root", "");
             String ty = "student";
             PreparedStatement ps = con
                     .prepareStatement("insert into credentials values(?,?,?)");
@@ -134,7 +136,7 @@ public class AddStudent extends HttpServlet {
  
             int i = ps.executeUpdate();
             if (i > 0)
-            	request.getRequestDispatcher("admin.jsp").forward(request,response);
+            	request.getRequestDispatcher(red).forward(request,response);
             else
             	out.print("registration failed!");
         }catch (Exception e2) {

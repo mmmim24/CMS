@@ -49,13 +49,15 @@ public class AddCourse extends HttpServlet {
         String cr = request.getParameter("credit");
         String na = request.getParameter("name");
         String em = request.getParameter("email");
+        String red = "admin.html";
+        String database = "jdbc:mysql://localhost:3306/sql_workbench";
        
  
         try {
         	//database connection
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection(
-            		"jdbc:mysql://localhost:3306/sql_workbench", "root", "");
+            		database, "root", "");
             //insert data into admin_input table
             PreparedStatement ps = con
                     .prepareStatement("insert into admin_input values(?,?,?,?,?)");
@@ -71,7 +73,7 @@ public class AddCourse extends HttpServlet {
             int i = ps.executeUpdate();
             //when successfully submitted those data
             if (i > 0)
-            	request.getRequestDispatcher("admin.jsp").forward(request,response);
+            	request.getRequestDispatcher(red).forward(request,response);
             //if failed to submit
             else
             	out.print("submit failed");

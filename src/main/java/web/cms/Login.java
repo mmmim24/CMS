@@ -90,7 +90,7 @@ public class Login extends HttpServlet {
             	}
             	else if(t.equals("admin")) {
             		//if admin try to login then
-            		request.getRequestDispatcher("admin.jsp").forward(request,response);
+            		request.getRequestDispatcher("admin.html").forward(request,response);
             		
             	}
                 

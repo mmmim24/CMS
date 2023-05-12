@@ -87,12 +87,14 @@ public class AddTeacher extends HttpServlet {
         String em = request.getParameter("email");
         String dp = request.getParameter("dept");
         String pa = request.getParameter("password");
+        String red = "admin.html";
+        String database = "jdbc:mysql://localhost:3306/sql_workbench";
        
  
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection(
-            		"jdbc:mysql://localhost:3306/sql_workbench", "root", "");
+            		database, "root", "");
  
             PreparedStatement ps = con
                     .prepareStatement("insert into teachers values(?,?,?,?)");
@@ -120,7 +122,7 @@ public class AddTeacher extends HttpServlet {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection(
-            		"jdbc:mysql://localhost:3306/sql_workbench", "root", "");
+            		database, "root", "");
             String ty = "teacher";
             PreparedStatement ps = con
                     .prepareStatement("insert into credentials values(?,?,?)");
@@ -131,7 +133,7 @@ public class AddTeacher extends HttpServlet {
  
             int i = ps.executeUpdate();
             if (i > 0)
-            	request.getRequestDispatcher("admin.jsp").forward(request,response);
+            	request.getRequestDispatcher(red).forward(request,response);
             else
             	out.print("registration failed!");
         }catch (Exception e2) {
