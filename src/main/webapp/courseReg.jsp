@@ -1,13 +1,18 @@
-<!-- //This is a registration page only for the teachers. -->
+<!-- /* -->
+<!-- This page will register a course bu stydent. -->
+<!-- */ -->
+
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+     <%@ page import="java.sql.DriverManager" %>
+<%@ page import="java.sql.*" %>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Add teacher</title>
+<title>Register for a course</title>
 <!-- import bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
@@ -18,7 +23,6 @@
 <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-<section>
 <header>
 <div class="row">
             <nav class="navbar navbar-dark bg-primary fixed-top">
@@ -32,26 +36,10 @@
                 </div>
             </nav>
         </div>
+ 
+
 </header>
 </section>
-<div class = "card text-bg-primary shadow-lg" >
-<div class="card-header">
-      <h1>Add a new teacher</h1>
-    </div>
-<div class = "card-body">
-<form class = "post_items_form" action="addteacher" method="post">
- 
-        <div class="mb-3"><input class="form-control" type="text" name="name" placeholder = "Enter Your Name" required/></div>
-        
-        <div class="mb-3"><input type="text" class="form-control" name="email" placeholder = "Enter Your Email"  required/></div>
-        <div class="mb-3"><input type="text" class="form-control" name="dept" placeholder = "Enter Your Department" required/></div>
-        <div class="mb-3"><input type="password" class="form-control" name="password" placeholder= "Enter password" required/></div>
-        <div class="card-footer d-grid"><input class="btn btn-warning" type="submit" value="Register Teacher"/></div>
- 
-    </form>
-
-</div>
-</div>
 
 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasExample"
             aria-labelledby="offcanvasExampleLabel">
@@ -70,5 +58,96 @@
             </div>
         </div>
         
+<h2 style="padding:80px 0px 20px 20px">Course Info</h2>
+
+ <% String code = request.getParameter("code"); 
+  
+ try {
+     Class.forName("com.mysql.jdbc.Driver");
+     java.sql.Connection con = DriverManager.getConnection(
+             "jdbc:mysql://localhost:3306/sql_workbench", "root", "");
+
+    
+     String query = "SELECT  * FROM admin_input";
+
+     PreparedStatement ps = con.prepareStatement(query);
+
+    
+     /* ps.setString(1, code); */
+    
+    
+    
+     ResultSet rs = ps.executeQuery();
+     %>
+     <table class="table table-striped" >
+  	
+  		<thead>
+  	
+	<tr>
+		<th scope="col">#</th>
+  		<th scope="col">Title</th>
+  		<th scope="col">Code</th>
+  		<th scope="col">Credit</th>
+  		<th scope="col">Teacher's Name</th>
+  		<th scope="col">Teacher's Email</th>
+  	</tr>	
+  	</thead>
+     <tbody>     
+     <%
+     int i = 0;
+     while(rs.next()) {
+     	String ti = rs.getString("title");
+     	String co = rs.getString("code");
+     	String nm = rs.getString("name");
+     	String em = rs.getString("email");
+     	String cr = rs.getString("credit");
+     	
+     	i++;
+     	%>
+        
+    	
+    	<tr>
+    		<th scope="row"><%=i%> </th>
+    		<td><%=ti%></td>
+    		<td ><%=co%></td>
+    		<td ><%=cr%></td>
+           	<td ><%=nm%></td>
+    		<td ><%=em%></td>
+    	</tr>	
+     	
+    	<tr>
+    		
+    	<th scope="row">	</th>
+    	<td>
+      	<form action="take2 " method = "post">
+     	<input type = "hidden" name = "code" value = <%=co%>>
+     	<input type = "hidden" name = "title" value = <%=ti%>>
+     	<input type = "hidden" name = "credit" value = <%=cr%>>
+     	<input class="btn btn-warning" type = "submit" name ="register" value = "register">
+     	</form>
+     	
+     	</td>
+          </tr>	
+    		
+         	
+         	
+         	
+       	 <% 
+     	
+         
+     }
+     %>
+     </tbody>
+     </table>
+     <% 
+           
+ } catch (Exception e2) {
+     System.out.println(e2);
+ }
+
+ out.close();
+ %>
+ 
+ 
 </body>
 </html>

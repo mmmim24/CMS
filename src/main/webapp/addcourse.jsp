@@ -14,7 +14,7 @@
 <title>Add Course</title>
 <!-- import bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+	
 
     <!-- Import fontawesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
@@ -22,22 +22,8 @@
 
 </head>
 <body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 <header>
-<!-- <nav>
-<h1>CMS</h1>
-<section>
-  <ul id = "nav">
-        <li>admin</li>
-   <li><img src="admin.png" style="height: 30px;width: 30px; margin:right;margin_top :0px"></li>     
-    <li><a class = "btn btn-primary" href="adminhome.jsp">Add Courses</a> </li>
-    <li><a class = "homeblack" href="added_course.jsp">Submitted Courses</a> </li>
-     <li><a class = "homeblack" href="login.jsp">Logout</a> </li>
-    
-    
-  </ul>
-
-</nav>
- -->
         <div class="row">
             <nav class="navbar navbar-dark bg-primary fixed-top">
                 <div class="container-fluid">
@@ -54,27 +40,37 @@
 </section>
 
 
-<div class = "post_items_page" >
-<div class = "form"  id = "content">
-<form class = "post_items_form" action="addcourse" method="post">
-     <input type="text" name="title" placeholder = "Enter Course Title"  required><br>
-     <input type="text" name="code" placeholder = "Enter Course Code"  required><br>
-     <select name="credit" id = "select_id"  required>
-            <option>choose course credit </option >
+<div class = "card text-bg-primary shadow-lg" >
+<div class = "card-header"><h1>Add a new course</h1></div>
+<div class= "card-body">
+<form  action="addcourse" method="post">
+     <div class="mb-3"><input type="text" class="form-control" name="title" placeholder = "Enter Course Title"  required>
+     </div>
+     <div class="mb-3"><input type="text" class="form-control" name="code" placeholder = "Enter Course Code"  required>
+     </div>
+     <div class="mb-3">
+     <select class= "form-select" aria-label="Choose course credits" name="credit" id = "select_id"  required>
+            <option selected>choose course credit </option >
             <option>1</option >
             <option>1.5</option>
             <option>2</option>
             <option>3</option>
             <option>4</option>
             
-        </select> <br/>
-    <input type="text" name="name" placeholder = "Assign Teacher" required><br>
-     <input type="text" name="email" placeholder = "Enter Course Teacher's Email " required><br>
+        </select>
+     </div>
+
+    <div class="mb-3"><input  class="form-control" id="assign-teacher" 
+                             type="text" name="name" placeholder = "Assign Teacher" required></div>
+     <div class="mb-3"><input class="form-control" id="teacher-email"
+                             type="text" name="email" placeholder = "Enter Course Teacher's Email " required></div>
      
-     <input class="btn btn-warning" type="submit" value="add to course">
+     <div class="card-footer d-grid"><input class="btn btn-warning" type="submit" value="Add this Course"></div>
 </form>
 </div>
 </div>
+
+
 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasExample"
             aria-labelledby="offcanvasExampleLabel">
             <div class="offcanvas-header">

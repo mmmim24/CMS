@@ -70,6 +70,7 @@
                 </div>
             </div>
         </div>
+<h2 style="padding:80px 0px 20px 20px">Course Info</h2>
 
  <% String code = request.getParameter("code"); 
   
@@ -88,56 +89,52 @@
     
      ResultSet rs = ps.executeQuery();
      %>
-     <table align="center" style="width: 80%;line-height: 40px; background: rgba(0,0,0,0.3); margin-left: 100px;  margin-bottom: 50px;margin-top: 50px;">
-  	<tr>
-  		<th style ="color : white;" colspan="10"><h2>Course Info</h2></th>
-  	</tr>
-
-  	<t><th style="border: 1px solid black; background: #00807359;border-radius: 10px;color : white;">Title</th>
-  		<th style="border: 1px solid black; background: #00807359;border-radius: 10px;color : white;">Code</th>
-  		<th style="border: 1px solid black; background: #00807359;border-radius: 10px;color : white;">Credit</th>
-  		<th style="border: 1px solid black; background: #00807359;border-radius: 10px;color : white;">Teacher's Name</th>
-  		<th style="border: 1px solid black; background: #00807359;border-radius: 10px;color : white;">Teacher's Email</th>
-  		
-  	</t>
-     
+     <table class="table table-striped" >
+  	
+  		<thead>
+  	
+	<tr>
+		<th scope="col">#</th>
+  		<th scope="col">Title</th>
+  		<th scope="col">Code</th>
+  		<th scope="col">Credit</th>
+  		<th scope="col">Teacher's Name</th>
+  		<th scope="col">Teacher's Email</th>
+  	</tr>	
+  	</thead>
+     <tbody>
      <%
+     int i = 0;
      while(rs.next()) {
+    	
      	String ti = rs.getString("title");
      	String co = rs.getString("code");
      	String nm = rs.getString("name");
      	String em = rs.getString("email");
      	String cr = rs.getString("credit");
      	
-     	
+     	i++;
      	%>
         
     	
      	
     	<tr>
-    		<td style=" border: 1px solid black;color : white;" id="row" align="center"  id="row" align="center"><%=ti%></td>
-    		<td  style=" border: 1px solid black;color : white;" id="row" align="center"id="row" align="center"><%=co%></td>
-    		<td  style=" border: 1px solid black;color : white;" id="row" align="center"id="row" align="center"><%=cr%></td>
-           <td  style=" border: 1px solid black;color : white;" id="row" align="center"id="row" align="center"><%=nm%></td>
-    		<td  style=" border: 1px solid black;color : white;" id="row" align="center"id="row" align="center"><%=em%></td>
-    		
-    	<td style=" " id="row" align="center">	
-      	<form action="take2 " method = "post">
-     	<input type = "hidden" name = "code" value = <%=co%>>
-     	<input type = "hidden" name = "title" value = <%=ti%>>
-     	<input type = "hidden" name = "credit" value = <%=cr%>>
-     	</form>
-     	</td>
-          </tr>	
-    		
+    		<th scope="row"><%=i%> </th>
+    		<td><%=ti%></td>
+    		<td ><%=co%></td>
+    		<td ><%=cr%></td>
+           	<td ><%=nm%></td>
+    		<td ><%=em%></td>
+    	</tr>	
+    	
          	
          	
          	
        	 <% 
      	
-         
      }
      %>
+     </tbody>
      </table>
      <% 
            

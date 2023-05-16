@@ -10,18 +10,20 @@
 <title>Add student</title>
 <!-- import bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+	
 
     <!-- Import fontawesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
 </head>
 <body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+<section>
 <header>
 <div class="row">
             <nav class="navbar navbar-dark bg-primary fixed-top">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="#">Course Management System</a>
+                    <a class="navbar-brand" href="admin.html">Course Management System</a>
                     <a class="btn btn-light" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button"
                         aria-controls="offcanvasExample">
                         <i class="fas fa-user"></i>
@@ -32,23 +34,28 @@
         </div>
 </header>
 </section>
-<div class = "post_items_page" >
-<div class = "form"  id = "content">
+
+<!-- Form -->
+<div class = "card text-bg-primary shadow-lg" >
+<div class = "card-header"><h1>Add a new student</h1>
+        </div>
+        <div class="card-body">
 
 
-<form class = "post_items_form" action="addstudent" method="post">
+<form  action="addstudent" method="post">
  
-       <input type="text" name="name" placeholder = "Enter your name" required/><br/>
-       <input type="text" name="reg" placeholder = "Enter your Registration no" required/><br/>
-       <input type="text" name="dept" placeholder = "Enter your Department" required/><br/>
-       <input type="text" name="session" placeholder = "Enter your Session" required/><br/>
-       <input type="text" name="email"placeholder = "Enter your Email" required/><br/>
-        <input type="password" name="password"placeholder = "Enter password" required/><br/>
-        <input style="background: #00807359;color:white;" type="submit" value="sign up"/>
+       <div class="mb-3"><input class="form-control" type="text" name="name" placeholder = "Enter your name" required/></div>
+       <div class="mb-3"><input class="form-control" type="text" name="reg" placeholder = "Enter your Registration no" required/></div>
+       <div class="mb-3"><input class="form-control" type="text" name="dept" placeholder = "Enter your Department" required/></div>
+       <div class="mb-3"><input class="form-control" type="text" name="session" placeholder = "Enter your Session" required/></div>
+       <div class="mb-3"><input class="form-control" type="text" name="email"placeholder = "Enter your Email" required/></div>
+        <div class="mb-3"><input class="form-control" type="password" name="password"placeholder = "Enter password" required/></div>
+        <div class="card-footer d-grid"><input class="btn btn-warning" type="submit" value="Register Student"/></div>
  
     </form>
     </div>
 </div>
+
 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasExample"
             aria-labelledby="offcanvasExampleLabel">
             <div class="offcanvas-header">

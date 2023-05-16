@@ -1,0 +1,59 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    overflow: auto;
+}
+
+
+/* Position the card to fill the whole viewport */
+.card {
+    margin-top: 0;
+    margin-left: 10%;
+    margin-right: 10%;
+    max-height: 80%;
+    border: none;
+}
+
+
+.card-img-overlay:hover{
+    background-color: rgba(0,0,0,0.5);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Center the title */
+.card-title {
+    font-size: 3.0vw;
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#overlay-img {
+    opacity: 0.5;
+    overflow-y: hidden;
+
+}
+
+
+.table {
+    width: 80%;
+    margin-left: 10%;
+}
+
+#view-courses-header {
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+
+
+

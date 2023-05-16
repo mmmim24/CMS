@@ -5,13 +5,17 @@ import java.io.PrintWriter;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import java.lang.String;
 
 
 
@@ -20,6 +24,41 @@ import javax.servlet.http.HttpSession;
  */
 @WebServlet("/login")
 public class Login extends HttpServlet {
+	
+	public static String getSHA(String input) {
+
+		try {
+
+			// Static getInstance method is called with hashing SHA
+			MessageDigest md = MessageDigest.getInstance("SHA-256");
+
+			// digest() method called
+			// to calculate message digest of an input
+			// and return array of byte
+			byte[] messageDigest = md.digest(input.getBytes());
+
+			// Convert byte array into signum representation
+			BigInteger no = new BigInteger(1, messageDigest);
+
+			// Convert message digest into hex value
+			String hashtext = no.toString(16);
+
+			while (hashtext.length() < 32) {
+				hashtext = "0" + hashtext;
+			}
+
+			return hashtext;
+		}
+
+		// For specifying wrong message digest algorithms
+		catch (NoSuchAlgorithmException e) {
+			System.out.println("Exception thrown" + " for incorrect algorithm: " + e);
+
+			return null;
+		}
+	}
+	
+	
 	private static final long serialVersionUID = 1L;
        
     /**
@@ -46,7 +85,7 @@ public class Login extends HttpServlet {
 		response.setContentType("text/html");
         PrintWriter out = response.getWriter();
  
-        String email = request.getParameter("email");
+        String user = request.getParameter("email");
         String pass = request.getParameter("password");
    
         try {
@@ -57,7 +96,7 @@ public class Login extends HttpServlet {
             
             
             //password is hashed before check 
-//            pass = getSHA(pass);
+            pass = getSHA(pass);
             
             //check if both email and password is correct
             String query = "SELECT * FROM credentials WHERE username =? AND password =?";
@@ -65,12 +104,12 @@ public class Login extends HttpServlet {
             PreparedStatement ps = con.prepareStatement(query);
  
             //compared email and password
-            ps.setString(1, email);
+            ps.setString(1, user);
             ps.setString(2, pass);
             
             //create a session and keep the email into Email caiable
             HttpSession session=request.getSession();  
-            session.setAttribute("Email",email);
+            session.setAttribute("Email",user);
            
             ResultSet rs = ps.executeQuery();
             
@@ -80,12 +119,12 @@ public class Login extends HttpServlet {
             	
             	if(t.equals("student")) {
             		//if any student try to login then 
-            		request.getRequestDispatcher("student.jsp").forward(request,response);
+            		request.getRequestDispatcher("student.html").forward(request,response);
             		
             	}
             	else if(t.equals("teacher")) {
             		//if any teacher try to login then
-            		request.getRequestDispatcher("teacher.jsp").forward(request,response);
+            		request.getRequestDispatcher("instructor.html").forward(request,response);
             		
             	}
             	else if(t.equals("admin")) {

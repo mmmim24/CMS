@@ -70,6 +70,8 @@
                 </div>
             </div>
         </div>
+        
+      <h2 style="padding:80px 0px 20px 20px">Teacher Info</h2>
 
  <% String code = request.getParameter("code"); 
   
@@ -88,51 +90,43 @@
     
      ResultSet rs = ps.executeQuery();
      %>
-     <table align="center" style="width: 80%;line-height: 40px; background: rgba(0,0,0,0.3); margin-left: 100px;  margin-bottom: 50px;margin-top: 50px;">
-  	<tr>
-  		<th style ="color : white;" colspan="10"><h2>Teacher Info</h2></th>
-  	</tr>
-
-  	<t>
-  		<th style="border: 1px solid black; background: #00807359;border-radius: 10px;color : white;">Name</th>
-  		<th style="border: 1px solid black; background: #00807359;border-radius: 10px;color : white;">Email</th>
-  		<th style="border: 1px solid black; background: #00807359;border-radius: 10px;color : white;">Department</th>
-  	</t>
+ <table class="table table-striped" >
+  	
+  		<thead>
+  	
+	<tr>
+		<th scope="col">#</th>
+  		<th scope="col">Name</th>
+  		<th scope="col">Email</th>
+  		<th scope="col">Department</th>
+  	</tr>	
+  	</thead>
+     <tbody>
      
      <%
+     int i = 0;
      while(rs.next()) {
      	String nm = rs.getString("Name");
      	String em = rs.getString("Email");
      	String de = rs.getString("dept");
      	
      	
-     	%>
+     	i++;%>
         
     	
-     	
-    	<tr>
-    		
-           <td  style=" border: 1px solid black;color : white;" id="row" align="center"id="row" align="center"><%=nm%></td>
-    		<td  style=" border: 1px solid black;color : white;" id="row" align="center"id="row" align="center"><%=em%></td>
-    		<td  style=" border: 1px solid black;color : white;" id="row" align="center"id="row" align="center"><%=de%></td>
-    		
-    	<%--<td style=" " id="row" align="center"> 	
-      	<form action="take2 " method = "post">
-     	<input type = "hidden" name = "code" value = <%=co%>>
-     	<input type = "hidden" name = "title" value = <%=ti%>>
-     	<input type = "hidden" name = "credit" value = <%=cr%>>
-     	</form>
-     	</td> --%>
-          </tr>	
-    		
-         	
-         	
+     	<tr>
+    		<th scope="row"><%=i%> </th>
+           	<td ><%=nm%></td>
+    		<td ><%=em%></td>
+    		<td ><%=de%></td>
+    	</tr>	 	
          	
        	 <% 
      	
          
      }
      %>
+     </tbody>
      </table>
      <% 
            
