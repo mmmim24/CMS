@@ -8,19 +8,38 @@
 <%@ page import="java.io.*" %>
 <%@ page import="java.lang.*" %>
 <%
-String ti = request.getParameter("title");
+String ti = "";
 String co = request.getParameter("code");
-String cr = request.getParameter("credit");
-String nm = request.getParameter("name");
-String em = request.getParameter("email");
-String reg = request.getParameter("reg");
-String ss = request.getParameter("session");
+String cr = "";
+String nm = "";
+String em = (String)request.getSession(false).getAttribute("Email");
+String reg = "";
+String ss = "";
 
 try {
     Class.forName("com.mysql.jdbc.Driver");
     java.sql.Connection con = DriverManager.getConnection(
             "jdbc:mysql://localhost:3306/sql_workbench", "root", "");
-
+	
+    String q1 = "select * from students where email=?";
+    PreparedStatement as = con.prepareStatement(q1);
+    as.setString(1,em);
+    ResultSet rs = as.executeQuery();
+    while(rs.next()){
+      	 nm = rs.getString("Name");
+      	 reg = rs.getString("Reg_no");
+      	 ss = rs.getString("session");
+       }
+    
+    String q2 = "SELECT  * FROM admin_input where code =?";
+	PreparedStatement qs = con.prepareStatement(q2);
+	qs.setString(1,co);
+    ResultSet ds = qs.executeQuery();
+    while(ds.next()){
+      	 ti = ds.getString("title");
+      	 co = ds.getString("code");
+      	 cr = ds.getString("credit");
+       }
     
     String query = "insert into course_reg values(?,?,?,?,?,?,?)";
     PreparedStatement ps = con.prepareStatement(query);
@@ -87,7 +106,7 @@ try {
   <div class="card-header"><%=co %>  </div>
   <div class="card-body">
     <h3 class="card-title-success">Registration Succesful</h3>
-    <p></p>
+    <p><%=ti %> <%=co %> <%=cr %> <%=reg %> <%=nm %> <%=em %> <%=ss %></p>
     <a href="courseReg.jsp" class="btn btn-warning">Back to course registration page</a>
   </div>
 </div>

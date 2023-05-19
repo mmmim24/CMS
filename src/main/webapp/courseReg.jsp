@@ -1,5 +1,5 @@
 <!-- /* -->
-<!-- This page will register a course bu stydent. -->
+<!-- This page will register a course by stydent. -->
 <!-- */ -->
 
 
@@ -139,13 +139,7 @@ try {
     	<th scope="row">	</th>
     	<td>
       	<form action="registered.jsp " method = "post">
-     	<input type = "hidden" name = "title" value = <%=ti%>>
      	<input type = "hidden" name = "code" value = <%=co%>>
-     	<input type = "hidden" name = "credit" value = <%=cr%>>
-     	<input type = "hidden" name = "name" value = <%=name%>>
-     	<input type = "hidden" name = "email" value = <%=email%>>
-     	<input type = "hidden" name = "reg" value = <%=reg%>>
-     	<input type = "hidden" name = "session" value = <%=ss%>>
      	<input class="btn btn-warning" type = "submit" name ="register" value = "Register">
      	</form>
      	</td>
