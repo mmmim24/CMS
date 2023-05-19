@@ -16,9 +16,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 	
 
+	<link rel="stylesheet" type="text/css" href="style.css">
     <!-- Import fontawesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-<link rel="stylesheet" type="text/css" href="style.css">
 
 </head>
 <body>
@@ -74,7 +74,7 @@
 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasExample"
             aria-labelledby="offcanvasExampleLabel">
             <div class="offcanvas-header">
-                <h5 class="offcanvas-title" id="offcanvasExampleLabel">Ishtiaque Rahman</h5>
+                <h5 class="offcanvas-title" id="offcanvasExampleLabel">ADMIN</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" area-label="Close"></button>
             </div>
             <div class="offcanvas-body">

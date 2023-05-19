@@ -119,12 +119,12 @@ public class Login extends HttpServlet {
             	
             	if(t.equals("student")) {
             		//if any student try to login then 
-            		request.getRequestDispatcher("student.html").forward(request,response);
+            		request.getRequestDispatcher("student.jsp").forward(request,response);
             		
             	}
             	else if(t.equals("teacher")) {
             		//if any teacher try to login then
-            		request.getRequestDispatcher("instructor.html").forward(request,response);
+            		request.getRequestDispatcher("teacher.jsp").forward(request,response);
             		
             	}
             	else if(t.equals("admin")) {

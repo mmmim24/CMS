@@ -105,9 +105,9 @@ public class AddStudent extends HttpServlet {
             pa = getSHA(pa);
             ps.setString(1, re);
             ps.setString(2, nm);
-            ps.setString(3, dp);
-            ps.setString(4, se);
-            ps.setString(5, em);
+            ps.setString(3, em);
+            ps.setString(4, dp);
+            ps.setString(5, se);
             ps.setString(6, pa);
  
             int i = ps.executeUpdate();
