@@ -27,7 +27,7 @@
         <div class="row">
             <nav class="navbar navbar-dark bg-primary fixed-top">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="admin.jsp">Course Management System</a>
+                    <a class="navbar-brand" href="admin.jsp">Admin Dashboard</a>
                     <a class="btn btn-light" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button"
                         aria-controls="offcanvasExample">
                         <i class="fas fa-user"></i>
