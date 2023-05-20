@@ -15,6 +15,7 @@ String nm = "";
 String em = (String)request.getSession(false).getAttribute("Email");
 String reg = "";
 String ss = "";
+String msg="";
 
 try {
     Class.forName("com.mysql.jdbc.Driver");
@@ -64,8 +65,13 @@ try {
     ps.setString(5, em);
     ps.setString(6, reg);
     ps.setString(7, ss);   
-    ps.executeUpdate();
+    int i = ps.executeUpdate();
+    if (i > 0)
+    	msg = "Successful!";
+    else
+        msg = "Failed";
     }
+    else msg = "Done Already!";
           
 }catch (Exception e) {
     System.out.println(e);
@@ -120,8 +126,8 @@ try {
 		<div class="card text-center">
   <div class="card-header"><%=ti %></div>
   <div class="card-body">
-    <h3 class="card-title-success">Registration Succesful</h3>
-    <p>course added to <%=reg %></p>
+    <h3 class="card-title-success">Registration <%=msg %></h3>
+    <p></p>
     <a href="courseReg.jsp" class="btn btn-warning">Back to course registration page</a>
   </div>
 </div>
