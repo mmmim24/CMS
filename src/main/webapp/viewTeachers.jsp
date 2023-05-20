@@ -1,5 +1,5 @@
 <!-- /* -->
-<!-- This page will show all courses registered by admin -->
+<!-- This page will show all teachers registered by admin -->
 <!-- */ -->
 
 
@@ -19,25 +19,13 @@
 	<link rel = "stylesheet" href="style.css">
     <!-- Import fontawesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-<!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
 </head>
+<%
+String name=(String)request.getSession(false).getAttribute("Email");  
+%>
 <body>
 <header>
-<!-- <nav>
-<h1>OnlineCourseManagement</h1>
-<section>
-  <ul id = "nav">
-  <li>student</li>
-   <li><img src="stu.png" style="height: 30px;width: 30px; margin:right;margin_top :0px"></li>
-             <li><a class = "homeblack"href="studenthome.jsp">Home</a> </li>
-    <li><a class = "homeblack" href="taken_courses.jsp">View Courses</a> </li>
-     <li><a class = "homeblack" href="login.jsp">Logout</a> </li>
-    
-    
-  </ul>
 
-</nav>
- -->
  <div class="row">
             <nav class="navbar navbar-dark bg-primary fixed-top">
                 <div class="container-fluid">
@@ -52,12 +40,11 @@
         </div>
  
 </header>
-</section>
 
 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasExample"
             aria-labelledby="offcanvasExampleLabel">
             <div class="offcanvas-header">
-                <h5 class="offcanvas-title" id="offcanvasExampleLabel">ADMIN</h5>
+                <h5 class="offcanvas-title" id="offcanvasExampleLabel"><%=name %></h5>
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" area-label="Close"></button>
             </div>
             <div class="offcanvas-body">

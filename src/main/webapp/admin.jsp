@@ -15,7 +15,9 @@
     <link rel="stylesheet" href="admin.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-
+<%
+String name=(String)request.getSession(false).getAttribute("Email");  
+%>
 <body>
     <div class="container-fluid">
         <div class="row">
@@ -80,7 +82,7 @@
         <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasExample"
             aria-labelledby="offcanvasExampleLabel">
             <div class="offcanvas-header">
-                <h5 class="offcanvas-title" id="offcanvasExampleLabel">ADMIN</h5>
+                <h5 class="offcanvas-title" id="offcanvasExampleLabel"><%=name %></h5>
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" area-label="Close"></button>
             </div>
             <div class="offcanvas-body">

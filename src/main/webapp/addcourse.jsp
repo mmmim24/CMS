@@ -1,9 +1,4 @@
-<!-- /*  -->
-<!-- This page is admin's home page. when the admin will login, then they will redirect this page. -->
-<!--  which page will show admin to add course and assign course teache -->
-<!--  */ -->
-
-
+<!-- //This is a registration page only for new courses. -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
@@ -37,7 +32,9 @@
             </nav>
         </div>
 </header>
-</section>
+<%
+String name=(String)request.getSession(false).getAttribute("Email");  
+%>
 
 
 <div class = "card text-bg-primary shadow-lg" >
@@ -74,7 +71,7 @@
 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasExample"
             aria-labelledby="offcanvasExampleLabel">
             <div class="offcanvas-header">
-                <h5 class="offcanvas-title" id="offcanvasExampleLabel">ADMIN</h5>
+                <h5 class="offcanvas-title" id="offcanvasExampleLabel"><%=name %></h5>
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" area-label="Close"></button>
             </div>
             <div class="offcanvas-body">

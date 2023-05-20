@@ -34,6 +34,9 @@
         </div>
 </header>
 </section>
+<%
+String name=(String)request.getSession(false).getAttribute("Email");  
+%>
 <div class = "card text-bg-primary shadow-lg" >
 <div class="card-header">
       <h1>Add a new teacher</h1>
@@ -56,7 +59,7 @@
 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasExample"
             aria-labelledby="offcanvasExampleLabel">
             <div class="offcanvas-header">
-                <h5 class="offcanvas-title" id="offcanvasExampleLabel">ADMIN</h5>
+                <h5 class="offcanvas-title" id="offcanvasExampleLabel"><%=name %></h5>
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" area-label="Close"></button>
             </div>
             <div class="offcanvas-body">
