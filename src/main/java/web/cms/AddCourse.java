@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -40,7 +41,7 @@ public class AddCourse extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		//doGet(request, response);
 		PrintWriter out = response.getWriter();
         
         //fetch data from input fields
@@ -49,18 +50,28 @@ public class AddCourse extends HttpServlet {
         String cr = request.getParameter("credit");
         String na = request.getParameter("name");
         String em = request.getParameter("email");
-        String red = "admin.html";
+        String red = "addcourse.jsp";
         String database = "jdbc:mysql://localhost:3306/sql_workbench";
-       
+        boolean flag = true;
  
         try {
         	//database connection
             Class.forName("com.mysql.jdbc.Driver");
-            Connection con = DriverManager.getConnection(
-            		database, "root", "");
+            Connection con = DriverManager.getConnection(database, "root", "");
+            PreparedStatement chk = con.prepareStatement("select * from admin_input where email=?");
+            chk.setString(1, em);
+            ResultSet chkrs = chk.executeQuery();
+            while(chkrs.next()) {
+            	String ccode = chkrs.getString("code");
+            	if(co.equals(ccode)) {
+            		flag = false;
+        			break;
+            	}
+            }
+            
             //insert data into admin_input table
-            PreparedStatement ps = con
-                    .prepareStatement("insert into admin_input values(?,?,?,?,?)");
+            if(flag) {
+            PreparedStatement ps = con.prepareStatement("insert into admin_input values(?,?,?,?,?)");
             
             //the data will be inserted according to this serial
             ps.setString(1, ti);
@@ -73,10 +84,13 @@ public class AddCourse extends HttpServlet {
             int i = ps.executeUpdate();
             //when successfully submitted those data
             if (i > 0)
+            	//out.print("submit success");
             	request.getRequestDispatcher(red).forward(request,response);
             //if failed to submit
             else
             	out.print("submit failed");
+            }
+            else request.getRequestDispatcher(red).forward(request,response);
             
             //if exception occured
         } catch (Exception e2) {

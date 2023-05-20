@@ -41,6 +41,20 @@ try {
       	 cr = ds.getString("credit");
        }
     
+    String chk = "select * from course_reg where email=?";
+    boolean flag = true;
+    PreparedStatement pat = con.prepareStatement(chk);
+    pat.setString(1,em);
+    ResultSet mat = pat.executeQuery();
+    while(mat.next()){
+    	String ccode = mat.getString("code");
+    	if(co.equals(ccode)){
+    		flag = false;
+			break;    		
+    	}
+    }
+    
+    if(flag){
     String query = "insert into course_reg values(?,?,?,?,?,?,?)";
     PreparedStatement ps = con.prepareStatement(query);
     ps.setString(1, ti);
@@ -51,6 +65,7 @@ try {
     ps.setString(6, reg);
     ps.setString(7, ss);   
     ps.executeUpdate();
+    }
           
 }catch (Exception e) {
     System.out.println(e);
@@ -61,7 +76,7 @@ try {
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Redirect</title>
+<title><%=co %></title>
 <!-- import bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
@@ -103,10 +118,10 @@ try {
         </div>
 		<div class="row">
 		<div class="card text-center">
-  <div class="card-header"><%=co %>  </div>
+  <div class="card-header"><%=ti %></div>
   <div class="card-body">
     <h3 class="card-title-success">Registration Succesful</h3>
-    <p><%=ti %> <%=co %> <%=cr %> <%=reg %> <%=nm %> <%=em %> <%=ss %></p>
+    <p>course added to <%=reg %></p>
     <a href="courseReg.jsp" class="btn btn-warning">Back to course registration page</a>
   </div>
 </div>

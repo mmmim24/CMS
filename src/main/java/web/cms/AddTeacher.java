@@ -16,6 +16,7 @@ import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 /**
  * Servlet implementation class AddTeacher
@@ -87,15 +88,25 @@ public class AddTeacher extends HttpServlet {
         String em = request.getParameter("email");
         String dp = request.getParameter("dept");
         String pa = request.getParameter("password");
-        String red = "admin.html";
+        String red = "addteacher.jsp";
         String database = "jdbc:mysql://localhost:3306/sql_workbench";
+        boolean flag = true;
        
  
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            Connection con = DriverManager.getConnection(
-            		database, "root", "");
- 
+            Connection con = DriverManager.getConnection(database, "root", "");
+            PreparedStatement chk = con.prepareStatement("select * from teachers where dept=?");
+            chk.setString(1, dp);
+            ResultSet chkrs = chk.executeQuery();
+            while(chkrs.next()) {
+            	String cmail = chkrs.getString("Email");
+            	if(em.equals(cmail)) {
+            		flag = false;
+        			break;
+            	}
+            }
+            if(flag) {
             PreparedStatement ps = con
                     .prepareStatement("insert into teachers values(?,?,?,?)");
             //hash password before insert into table
@@ -105,13 +116,14 @@ public class AddTeacher extends HttpServlet {
             ps.setString(2, em);
             ps.setString(3, dp);
             ps.setString(4, pa);
-            
-            
  
             int i = ps.executeUpdate();
             if (i > 0)
-                out.print("teacher successfully registered...");
-           
+            	request.getRequestDispatcher(red).forward(request,response);
+            else
+                out.print("submit failed...");
+            }
+            else request.getRequestDispatcher(red).forward(request,response);
  
         } catch (Exception e2) {
             System.out.println(e2);
@@ -121,9 +133,9 @@ public class AddTeacher extends HttpServlet {
         //also insert into credentials table during registration
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            Connection con = DriverManager.getConnection(
-            		database, "root", "");
+            Connection con = DriverManager.getConnection(database, "root", "");
             String ty = "teacher";
+            if (flag) {
             PreparedStatement ps = con
                     .prepareStatement("insert into credentials values(?,?,?)");
             
@@ -136,6 +148,8 @@ public class AddTeacher extends HttpServlet {
             	request.getRequestDispatcher(red).forward(request,response);
             else
             	out.print("registration failed!");
+        	}
+            else request.getRequestDispatcher(red).forward(request,response);
         }catch (Exception e2) {
             System.out.println(e2);
         }
