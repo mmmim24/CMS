@@ -17,6 +17,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Servlet implementation class AddTeacher
@@ -118,8 +119,10 @@ public class AddTeacher extends HttpServlet {
             ps.setString(4, pa);
  
             int i = ps.executeUpdate();
-            if (i > 0)
+            if (i > 0) {
+            	TimeUnit.SECONDS.sleep(1);
             	request.getRequestDispatcher(red).forward(request,response);
+            }
             else
                 out.print("submit failed...");
             }

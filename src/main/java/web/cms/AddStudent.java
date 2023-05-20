@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.concurrent.TimeUnit;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -121,8 +122,10 @@ public class AddStudent extends HttpServlet {
             ps.setString(6, pa);
  
             int i = ps.executeUpdate();
-            if (i > 0)
+            if (i > 0) {
+            	TimeUnit.SECONDS.sleep(1);
             	request.getRequestDispatcher(red).forward(request,response);
+            }
             else
                 out.print("submit failed...");
             }

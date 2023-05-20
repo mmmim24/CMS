@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.concurrent.TimeUnit;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -83,12 +84,16 @@ public class AddCourse extends HttpServlet {
             //execution
             int i = ps.executeUpdate();
             //when successfully submitted those data
-            if (i > 0)
+            if (i > 0) {
             	//out.print("submit success");
+            	TimeUnit.SECONDS.sleep(1); 
             	request.getRequestDispatcher(red).forward(request,response);
+            }
+            	
             //if failed to submit
-            else
+            else {
             	out.print("submit failed");
+            	}
             }
             else request.getRequestDispatcher(red).forward(request,response);
             
