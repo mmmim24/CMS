@@ -20,7 +20,7 @@
     <!-- import bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-	<link rel="stylesheet" href="student.css">
+	<link rel="stylesheet" href="css/student.css">
     <!-- Import fontawesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -109,7 +109,7 @@ String name ="student";
         <div class="row">
             <div class="col-12">
                 <div class="card text-bg-dark" >
-                    <img id="overlay-img" src="nick-morrison-FHnnjk1Yj7Y-unsplash.jpg" class="card-img" alt="...">
+                    <img id="overlay-img" src="img/nick-morrison-FHnnjk1Yj7Y-unsplash.jpg" class="card-img" alt="...">
                     <a href="courseReg.jsp">
                     <div class="card-img-overlay">
                         <h1 class="card-title">Register for a Course</h1>

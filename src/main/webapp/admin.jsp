@@ -12,7 +12,7 @@
 
     <!-- Import fontawesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="css/admin.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <%
@@ -38,7 +38,7 @@ String name=(String)request.getSession(false).getAttribute("Email");
         <div class="row gap-2 gap-md-0" id="panels">
             <div class="col-md-4">
                 <div class="card">
-                    <img id="card-img" src="nick-morrison-FHnnjk1Yj7Y-unsplash.jpg" class="card-img-top" alt="..."
+                    <img id="card-img" src="img/nick-morrison-FHnnjk1Yj7Y-unsplash.jpg" class="card-img-top" alt="..."
                         loading="lazy">
                     <div class="card-body">
                         <h1 class="card-title">Courses</h1>
@@ -52,7 +52,7 @@ String name=(String)request.getSession(false).getAttribute("Email");
             </div>
             <div class="col-md-4">
                 <div class="card">
-                    <img id="card-img" src="kobu-agency-7okkFhxrxNw-unsplash.jpg" class="card-img-top" alt="..."
+                    <img id="card-img" src="img/kobu-agency-7okkFhxrxNw-unsplash.jpg" class="card-img-top" alt="..."
                         loading="lazy">
                     <div class="card-body">
                         <h1 class="card-title">Teachers</h1>
@@ -66,7 +66,7 @@ String name=(String)request.getSession(false).getAttribute("Email");
             </div>
             <div class="col-md-4">
                 <div class="card">
-                    <img id="card-img" src="the-climate-reality-project-Hb6uWq0i4MI-unsplash.jpg" class="card-img-top"
+                    <img id="card-img" src="img/the-climate-reality-project-Hb6uWq0i4MI-unsplash.jpg" class="card-img-top"
                         alt="..." loading="lazy">
                     <div class="card-body">
                         <h1 class="card-title">Students</h1>
