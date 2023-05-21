@@ -15,9 +15,15 @@ String name=(String)request.getSession(false).getAttribute("Email");
     <link rel="stylesheet" href="css/login.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- import external js cdn -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <link rel = "stylesheet" href="alert/dist/sweetalert.css">
 </head>
 
 <body>
+<!-- status attribute fetching from servlet which is hidden in frontend -->
+<div><input type="hidden" id="status" value="<%=request.getAttribute("status")%>"></div>
+
 	<div class="container-fluid">
         <div class="row">
             <nav class="navbar navbar-dark bg-primary fixed-top">
@@ -72,6 +78,13 @@ String name=(String)request.getSession(false).getAttribute("Email");
             </div>
         </div>
     </div>
+    <!-- external javascript -->
+    <script type="text/javascript">
+    	var status = document.getElementById("status").value;
+    	if(status=="failed"){
+    		swal("Sorry","Your password is incorrect :(","warning");
+    	}
+    </script>
 </body>
 
 </html>

@@ -137,7 +137,9 @@ public class Login extends HttpServlet {
             }
             //if anyone enter wrong email or password
             else {
-            	out.print("Email or password doesn't match");
+            	request.setAttribute("status", "failed");
+            	request.getRequestDispatcher("index.jsp").forward(request,response);
+            	//out.print("Email or password doesn't match");
             }
                   
         } catch (Exception e2) {

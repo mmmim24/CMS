@@ -86,7 +86,6 @@ String name=(String)request.getSession(false).getAttribute("Email");
   		<th scope="col">Code</th>
   		<th scope="col">Credit</th>
   		<th scope="col">Teacher's Name</th>
-  		<th scope="col">Teacher's Email</th>
   	</tr>	
   	</thead>
      <tbody>
@@ -97,7 +96,6 @@ String name=(String)request.getSession(false).getAttribute("Email");
      	String ti = rs.getString("title");
      	String co = rs.getString("code");
      	String nm = rs.getString("name");
-     	String em = rs.getString("email");
      	String cr = rs.getString("credit");
      	
      	i++;
@@ -111,7 +109,6 @@ String name=(String)request.getSession(false).getAttribute("Email");
     		<td ><%=co%></td>
     		<td ><%=cr%></td>
            	<td ><%=nm%></td>
-    		<td ><%=em%></td>
     	</tr>	
     	
          	

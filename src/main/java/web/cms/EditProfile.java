@@ -122,7 +122,8 @@ public class EditProfile extends HttpServlet {
             }
             //if anyone enter wrong email or password
             else {
-            	out.print("user or password doesn't match");
+            	request.setAttribute("status", "failed");
+            	request.getRequestDispatcher("editProfile.jsp").forward(request,response);
             }
                   
         } catch (Exception e2) {
