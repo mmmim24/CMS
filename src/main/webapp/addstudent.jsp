@@ -46,11 +46,11 @@ String name=(String)request.getSession(false).getAttribute("Email");
 
 <form  action="addstudent" method="post">
  
-       <div class="mb-3"><input class="form-control" type="text" name="name" placeholder = "Enter your name" required/></div>
-       <div class="mb-3"><input class="form-control" type="text" name="reg" placeholder = "Enter your Registration no" required/></div>
-       <div class="mb-3"><input class="form-control" type="text" name="dept" placeholder = "Enter your Department" required/></div>
-       <div class="mb-3"><input class="form-control" type="text" name="session" placeholder = "Enter your Session" required/></div>
-       <div class="mb-3"><input class="form-control" type="text" name="email"placeholder = "Enter your Email" required/></div>
+       <div class="mb-3"><input class="form-control" type="text" name="name" placeholder = "Enter name" required/></div>
+       <div class="mb-3"><input class="form-control" type="text" name="reg" placeholder = "Enter Registration no" required/></div>
+       <div class="mb-3"><input class="form-control" type="text" name="dept" placeholder = "Enter Department" required/></div>
+       <div class="mb-3"><input class="form-control" type="text" name="session" placeholder = "Enter Session" required/></div>
+       <div class="mb-3"><input class="form-control" type="text" name="email"placeholder = "Enter Email" required/></div>
         <div class="mb-3"><input class="form-control" type="password" name="password"placeholder = "Enter password" required/></div>
         <div class="card-footer d-grid"><input class="btn btn-warning" type="submit" value="Register Student"/></div>
  
@@ -70,7 +70,7 @@ String name=(String)request.getSession(false).getAttribute("Email");
                 </div>
                 <div class="list-group mt-4">
                     <a href="index.html" class="list-group-item list-group-item-action list-group-item-danger"><i class="fas fa-sign-out-alt"></i> Logout</a>
-                    <a href="#" class="list-group-item list-group-item-action list-group-item-warning"><i class="fas fa-user-cog"></i> Edit Profile</a>
+                    <a href="editProfile.jsp" class="list-group-item list-group-item-action list-group-item-warning"><i class="fas fa-user-cog"></i> Edit Profile</a>
                 </div>
             </div>
         </div>
