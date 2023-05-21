@@ -1,3 +1,5 @@
+/*This is a java servlet class for assigning courses 
+by admin to the teachers which will be later taken by students*/ 
 package web.cms;
 
 import java.io.IOException;
@@ -45,14 +47,16 @@ public class AddCourse extends HttpServlet {
 		//doGet(request, response);
 		PrintWriter out = response.getWriter();
         
-        //fetch data from input fields
+        //getting data from input fields
         String ti = request.getParameter("title");
         String co = request.getParameter("code");
         String cr = request.getParameter("credit");
         String na = request.getParameter("name");
         String em = request.getParameter("email");
+        //database url and redirect url stored in variables
         String red = "addcourse.jsp";
         String database = "jdbc:mysql://localhost:3306/sql_workbench";
+        //this flag variable will prevent inserting duplicate values 
         boolean flag = true;
  
         try {
@@ -70,34 +74,32 @@ public class AddCourse extends HttpServlet {
             	}
             }
             
-            //insert data into admin_input table
+            //inserting data
             if(flag) {
             PreparedStatement ps = con.prepareStatement("insert into admin_input values(?,?,?,?,?)");
             
-            //the data will be inserted according to this serial
+            //fetched values will be inserted in this order
             ps.setString(1, ti);
             ps.setString(2, co);
             ps.setString(3, cr);
             ps.setString(4, na);
             ps.setString(5, em);
           
-            //execution
+
             int i = ps.executeUpdate();
-            //when successfully submitted those data
+            
             if (i > 0) {
-            	//out.print("submit success");
+            	//manually sleep time to give a transition effect of data storing :)
             	TimeUnit.SECONDS.sleep(1); 
             	request.getRequestDispatcher(red).forward(request,response);
             }
-            	
-            //if failed to submit
             else {
             	out.print("submit failed");
             	}
             }
             else request.getRequestDispatcher(red).forward(request,response);
             
-            //if exception occured
+            //exception handling
         } catch (Exception e2) {
             System.out.println(e2);
         }

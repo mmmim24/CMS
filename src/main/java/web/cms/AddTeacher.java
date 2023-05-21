@@ -1,3 +1,5 @@
+/*This is a java servlet class for adding teachers
+by admin in the database*/
 package web.cms;
 
 import java.io.IOException;
@@ -83,9 +85,8 @@ public class AddTeacher extends HttpServlet {
 //		doGet(request, response);
 		response.setContentType("text/html");
         PrintWriter out = response.getWriter();
-   //get data from user input
+   //getting data from input fields
         String nm = request.getParameter("name");
-        //String id = request.getParameter("id");
         String em = request.getParameter("email");
         String dp = request.getParameter("dept");
         String pa = request.getParameter("password");
@@ -131,9 +132,6 @@ public class AddTeacher extends HttpServlet {
         } catch (Exception e2) {
             System.out.println(e2);
         }
-        
-        
-        //also insert into credentials table during registration
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection(database, "root", "");

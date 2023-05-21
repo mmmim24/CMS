@@ -1,3 +1,5 @@
+/*This is a java servlet class for adding students
+by admin in the database*/
 package web.cms;
 
 import java.io.IOException;
@@ -26,6 +28,8 @@ import java.lang.String;
  */
 @WebServlet("/addstudent")
 public class AddStudent extends HttpServlet {
+	
+	//hashing method for credentials
 	public static String getSHA(String input) {
 
 		try {
@@ -85,18 +89,18 @@ public class AddStudent extends HttpServlet {
 		response.setContentType("text/html");
         PrintWriter out = response.getWriter();
  
-        //get data from user input
+        //getting data from input fields
         String nm = request.getParameter("name");
         String re = request.getParameter("reg");
         String dp = request.getParameter("dept");
         String se = request.getParameter("session");
         String em = request.getParameter("email");
         String pa = request.getParameter("password");
+        //database url and redirect url stored in variables
         String red = "addstudent.jsp";
         String database = "jdbc:mysql://localhost:3306/sql_workbench";
+        //this flag variable will prevent inserting duplicate values
         boolean flag = true;
-        
- 
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection(database, "root", "");
@@ -136,7 +140,7 @@ public class AddStudent extends HttpServlet {
         }
         
         
-        //also insert data into credentials table during registration
+        //inserting data into credentials table
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection(database, "root", "");
@@ -144,7 +148,7 @@ public class AddStudent extends HttpServlet {
             
             if(flag) {
             PreparedStatement ps = con.prepareStatement("insert into credentials values(?,?,?)");
-            
+            //fetched values will be inserted in this order
             ps.setString(1, em);
             ps.setString(2, pa);
             ps.setString(3, ty);
@@ -156,7 +160,8 @@ public class AddStudent extends HttpServlet {
             	out.print("registration failed!");
             }
             else request.getRequestDispatcher(red).forward(request,response);
-        }catch (Exception e2) {
+        }//exception handling
+        catch (Exception e2) {
             System.out.println(e2);
         }
  

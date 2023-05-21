@@ -63,7 +63,7 @@ String name ="student";
          %>
          
 
-<!-- View all courses -->
+<!-- View all courses that student has registered-->
             <div id="view-courses" class="col-12">
                 <h1 id="view-courses-header" class="text-bg-secondary p-1">View all Registered Courses</h1>
                 <table class="table table-hover table-primary">

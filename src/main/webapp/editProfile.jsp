@@ -34,10 +34,10 @@ String name=(String)request.getSession(false).getAttribute("Email");
 
 <div class="panel panel-primary">
             <div class="panel-heading text-center">
-                <h1><%=name %></h1>
+                <h1>Change Password</h1>
             </div>
             <div class="panel-body">
-                <h2 class="panel-heading text-center">Change Password</h2>
+                <h3 class="panel-heading text-center"><%=name %></h3>
                 <br>
                 <!-- INPUT FORM -->
                 <form action="edit" method="post">

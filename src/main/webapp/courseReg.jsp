@@ -139,6 +139,7 @@ try {
     	<th scope="row">	</th>
     	<td>
       	<form action="registered.jsp " method = "post">
+      	<!-- hidden input to send the course code later fetched in registered.jsp to store in database -->
      	<input type = "hidden" name = "code" value = <%=co%>>
      	<input class="btn btn-warning" type = "submit" name ="register" value = "Register">
      	</form>

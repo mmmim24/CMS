@@ -1,4 +1,4 @@
-<!-- //This is a registration page only for the teachers. -->
+<!-- //This is the teachers register page for admin -->
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -18,7 +18,7 @@
 
 </head>
 <body>
-<section>
+<!-- header section -->
 <header>
 <div class="row">
             <nav class="navbar navbar-dark bg-primary fixed-top">
@@ -33,8 +33,8 @@
             </nav>
         </div>
 </header>
-</section>
 <%
+//getting session
 String name=(String)request.getSession(false).getAttribute("Email");  
 %>
 <div class = "card text-bg-primary shadow-lg" >
@@ -55,7 +55,7 @@ String name=(String)request.getSession(false).getAttribute("Email");
 
 </div>
 </div>
-
+<!-- profile section -->
 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasExample"
             aria-labelledby="offcanvasExampleLabel">
             <div class="offcanvas-header">

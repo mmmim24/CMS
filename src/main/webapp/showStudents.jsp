@@ -1,5 +1,5 @@
 <!-- /* -->
-<!-- This page will show all courses registered to the teacher -->
+<!-- This page will show all students registered to a specific course for the teacher -->
 <!-- */ -->
 
 

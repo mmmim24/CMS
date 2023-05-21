@@ -1,4 +1,4 @@
-<!-- //This is a registration page only for new courses. -->
+<!-- //This is the course register page for admin -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
@@ -18,6 +18,7 @@
 </head>
 <body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+<!-- header section -->
 <header>
         <div class="row">
             <nav class="navbar navbar-dark bg-primary fixed-top">
@@ -33,6 +34,7 @@
         </div>
 </header>
 <%
+//getting session
 String name=(String)request.getSession(false).getAttribute("Email");  
 %>
 
@@ -67,7 +69,7 @@ String name=(String)request.getSession(false).getAttribute("Email");
 </div>
 </div>
 
-
+<!-- profile section -->
 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasExample"
             aria-labelledby="offcanvasExampleLabel">
             <div class="offcanvas-header">

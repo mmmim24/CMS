@@ -1,8 +1,7 @@
-<!-- //This is a registration page only for the student. -->
+<!-- //This is the student register page for admin -->
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-     <link rel="stylesheet" type="text/css" href="css/style.css">
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +9,7 @@
 <title>Add student</title>
 <!-- import bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-	<link rel = "stylesheet" href="style.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
 
     <!-- Import fontawesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
@@ -18,7 +17,7 @@
 </head>
 <body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
-<section>
+<!-- header section -->
 <header>
 <div class="row">
             <nav class="navbar navbar-dark bg-primary fixed-top">
@@ -33,8 +32,8 @@
             </nav>
         </div>
 </header>
-</section>
 <%
+//getting session
 String name=(String)request.getSession(false).getAttribute("Email");  
 %>
 <!-- Form -->
@@ -57,7 +56,7 @@ String name=(String)request.getSession(false).getAttribute("Email");
     </form>
     </div>
 </div>
-
+<!-- profile section -->
 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasExample"
             aria-labelledby="offcanvasExampleLabel">
             <div class="offcanvas-header">

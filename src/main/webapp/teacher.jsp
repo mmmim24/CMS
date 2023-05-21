@@ -72,22 +72,47 @@ try {
                 <h1>View all Courses</h1>
                 <div class="accordion" id="accordionExample">
     <%
+	int i = 1;       	
     while(rs.next()){
-       	
       	 String title = rs.getString("title");
       	 String code = rs.getString("code");
       	 String credit = rs.getString("credit");
     	 name = rs.getString("name");
+    	 if(i==1){
    %>
                     <div class="accordion-item">
                         <h2 class="accordion-header">
                             <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                data-bs-target="#collapse<%=i %>" aria-expanded="true" aria-controls="collapse<%=i %>">
                                 <i class="fa fa-award p-2"></i>
                                 <b><%=code %></b>
                             </button>
                         </h2>
-                        <div id="collapseOne" class="accordion-collapse collapse show"
+                        <div id="collapse<%=i %>" class="accordion-collapse collapse show"
+                            data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <b><%=title %></b> course offers 
+                               a <b><code><%=credit %></code></b> credit course.       <br>
+                               
+                               <form action="showStudents.jsp" method="post"><div class="card-footer d-grid">
+                               <input type="hidden" name ="code" value=<%=code %> >
+                               <input type="hidden" name ="name" value=<%=name %> >
+                               <input class="btn btn-success" type="submit" name="Registered Students" value="Registered Students">
+                               </div></form>
+                               
+                            </div>
+                        </div>
+                    </div>
+                    <%}else{ %>
+                                        <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapse<%=i %>" aria-expanded="true" aria-controls="collapse<%=i %>">
+                                <i class="fa fa-award p-2"></i>
+                                <b><%=code %></b>
+                            </button>
+                        </h2>
+                        <div id="collapse<%=i %>" class="accordion-collapse collapse"
                             data-bs-parent="#accordionExample">
                             <div class="accordion-body">
                                 <b><%=title %></b> course offers 
@@ -104,7 +129,7 @@ try {
                     </div>
    		     	 <% 
    
-    }
+                    }i++;}
     %>                 
                 </div>
             </div>

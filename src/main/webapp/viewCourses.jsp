@@ -22,6 +22,7 @@
 <%
 String name=(String)request.getSession(false).getAttribute("Email");  
 %>
+<!-- header section -->
 <header>
  <div class="row">
             <nav class="navbar navbar-dark bg-primary fixed-top">
@@ -37,7 +38,7 @@ String name=(String)request.getSession(false).getAttribute("Email");
         </div>
  
 </header>
-
+<!-- profile section -->
 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasExample"
             aria-labelledby="offcanvasExampleLabel">
             <div class="offcanvas-header">
@@ -56,7 +57,9 @@ String name=(String)request.getSession(false).getAttribute("Email");
         </div>
 <h2 style="padding:80px 0px 20px 20px">Course Info</h2>
 
- <% String code = request.getParameter("code"); 
+ <% 
+ //sql query for all courses available
+ String code = request.getParameter("code"); 
   
  try {
      Class.forName("com.mysql.jdbc.Driver");

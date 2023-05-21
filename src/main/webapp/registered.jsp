@@ -9,6 +9,7 @@
 <%@ page import="java.lang.*" %>
 <%
 String ti = "";
+// hidden input sent from courseReg.jsp
 String co = request.getParameter("code");
 String cr = "";
 String nm = "";

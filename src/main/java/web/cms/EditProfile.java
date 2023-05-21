@@ -1,3 +1,5 @@
+/*This is a java servlet class for 
+change password by the users */
 package web.cms;
 
 import java.io.IOException;
@@ -83,7 +85,9 @@ public class EditProfile extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.setContentType("text/html");
         PrintWriter out = response.getWriter();
-        String user = (String)request.getSession(false).getAttribute("Email");;
+        
+        //old password and new password fetched from input and username fetched from session
+        String user = (String)request.getSession(false).getAttribute("Email");
         String old = request.getParameter("old");
         String neww= request.getParameter("nnew");
         try {
@@ -92,14 +96,9 @@ public class EditProfile extends HttpServlet {
             java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sql_workbench", "root", "");
             
             
-            //password is hashed before check 
-            System.out.println(old);
-            System.out.println(user);
-            System.out.println(neww);
+            //password is hashed before check
             neww = getSHA(neww);
             old = getSHA(old);
-            System.out.println(old);
-            System.out.println(neww);
             //check if both email and password is correct
             String query = "SELECT * FROM credentials WHERE username =? AND password =?";
 
@@ -111,7 +110,7 @@ public class EditProfile extends HttpServlet {
             
            
             ResultSet rs = ps.executeQuery();
-            
+            // after password matched with session user it is replaced by the new one
             if(rs.next()) {
             	
 					  PreparedStatement ns = con.prepareStatement("update credentials set password = ? where username = ?;");

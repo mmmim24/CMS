@@ -1,3 +1,4 @@
+/*This is a java servlet class for login*/
 package web.cms;
 
 import java.io.IOException;
@@ -84,7 +85,7 @@ public class Login extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.setContentType("text/html");
         PrintWriter out = response.getWriter();
- 
+        //user and password fetching from input
         String user = request.getParameter("email");
         String pass = request.getParameter("password");
    
@@ -107,7 +108,7 @@ public class Login extends HttpServlet {
             ps.setString(1, user);
             ps.setString(2, pass);
             
-            //create a session and keep the email into Email caiable
+            //create a session and keep the email into Email variable
             HttpSession session=request.getSession();  
             session.setAttribute("Email",user);
            
