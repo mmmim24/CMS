@@ -108,7 +108,7 @@ try {
   		<th scope="col">Code</th>
   		<th scope="col">Credit</th>
   		<th scope="col">Teacher's Name</th>
-  		<th scope="col">Teacher's Email</th>
+  		<!-- <th scope="col">Teacher's Email</th> -->
   	</tr>	
   	</thead>
      <tbody>     
@@ -118,7 +118,7 @@ try {
      	String ti = rs.getString("title");
      	String co = rs.getString("code");
      	String nm = rs.getString("name");
-     	String em = rs.getString("email");
+     	/* String em = rs.getString("email"); */
      	String cr = rs.getString("credit");
      	
      	i++;
@@ -131,7 +131,7 @@ try {
     		<td ><%=co%></td>
     		<td ><%=cr%></td>
            	<td ><%=nm%></td>
-    		<td ><%=em%></td>
+    		<%-- <td ><%=em%></td> --%>
     	</tr>	
      	
     	<tr>

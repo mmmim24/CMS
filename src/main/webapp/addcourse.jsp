@@ -1,4 +1,4 @@
-<!-- //This is the course register page for admin -->
+ <!-- //This is the course register page for admin -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ page import="java.sql.DriverManager" %>

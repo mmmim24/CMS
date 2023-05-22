@@ -41,7 +41,7 @@ try {
     java.sql.Connection con = DriverManager.getConnection(
     		"jdbc:mysql://localhost:3306/sql_workbench", "root", "");
     
-    String query = "SELECT * FROM admin_input WHERE email =?";
+    String query = "SELECT * FROM teachers WHERE email =?";
 
     PreparedStatement ps = con.prepareStatement(query);
 
@@ -49,6 +49,13 @@ try {
     ps.setString(1, email);
    
     ResultSet rs = ps.executeQuery();
+    while(rs.next()){
+     	 name = rs.getString("name");
+    }
+    PreparedStatement qs = con.prepareStatement("SELECT * FROM admin_input WHERE name =?");
+    qs.setString(1,name);
+    ResultSet qrs = qs.executeQuery();
+   	 
     %>
 
 <div class="container-fluid">
@@ -73,11 +80,11 @@ try {
                 <div class="accordion" id="accordionExample">
     <%
 	int i = 1;       	
-    while(rs.next()){
-      	 String title = rs.getString("title");
-      	 String code = rs.getString("code");
-      	 String credit = rs.getString("credit");
-    	 name = rs.getString("name");
+    while(qrs.next()){
+      	 String title = qrs.getString("title");
+      	 String code = qrs.getString("code");
+      	 String credit = qrs.getString("credit");
+    	 //name = rs.getString("name");
     	 if(i==1){
    %>
                     <div class="accordion-item">
