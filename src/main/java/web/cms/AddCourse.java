@@ -63,8 +63,8 @@ public class AddCourse extends HttpServlet {
         	//database connection
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection(database, "root", "");
-            PreparedStatement chk = con.prepareStatement("select * from admin_input where email=?");
-            chk.setString(1, em);
+            PreparedStatement chk = con.prepareStatement("select * from admin_input where name=?");
+            chk.setString(1, na);
             ResultSet chkrs = chk.executeQuery();
             while(chkrs.next()) {
             	String ccode = chkrs.getString("code");
@@ -76,14 +76,14 @@ public class AddCourse extends HttpServlet {
             
             //inserting data
             if(flag) {
-            PreparedStatement ps = con.prepareStatement("insert into admin_input values(?,?,?,?,?)");
+            PreparedStatement ps = con.prepareStatement("insert into admin_input values(?,?,?,?)");
             
             //fetched values will be inserted in this order
             ps.setString(1, ti);
             ps.setString(2, co);
             ps.setString(3, cr);
             ps.setString(4, na);
-            ps.setString(5, em);
+            //ps.setString(5, em);
           
 
             int i = ps.executeUpdate();

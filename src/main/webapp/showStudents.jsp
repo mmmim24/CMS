@@ -7,7 +7,29 @@
     pageEncoding="UTF-8"%>
      <%@ page import="java.sql.DriverManager" %>
 <%@ page import="java.sql.*" %>
+<%
+String user=(String)request.getSession(false).getAttribute("Email");  
+//session name
+if(user==null) request.getRequestDispatcher("index.jsp").forward(request,response);
+try{
+	Class.forName("com.mysql.jdbc.Driver");
+    java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sql_workbench", "root", "");
+    String query = "SELECT  * FROM credentials where username=?";
 
+    PreparedStatement ps = con.prepareStatement(query);
+    ps.setString(1,user);
+    
+    ResultSet rs = ps.executeQuery();
+	while(rs.next()) {
+		String t = rs.getString("type");
+		if((t.equals("student")||t.equals("admin"))){
+			request.getRequestDispatcher("index.jsp").forward(request,response);
+		}
+	}
+}catch(Exception e){
+	System.out.println(e);
+}
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -49,8 +71,13 @@
                     This is the Teacher profile overview tab. It also contains the options to logout or edit the profile.
                 </div>
                 <div class="list-group mt-4">
-                    <a href="index.html" class="list-group-item list-group-item-action list-group-item-danger"><i class="fas fa-sign-out-alt"></i> Logout</a>
-                    <a href="editProfile.jsp" class="list-group-item list-group-item-action list-group-item-warning"><i class="fas fa-user-cog"></i> Edit Profile</a>
+                    <form action="logout" method="post">
+                	<button class="btn btn-danger w-100" type="submit" value="Logout"><i class="fas fa-sign-out-alt"></i> Logout</button>
+                </form>
+                <br>
+                <form>
+                    <a href="editProfile.jsp" class="btn btn-warning w-100"><i class="fas fa-user-cog"></i> Edit Profile</a>
+                </form>
                 </div>
             </div>
         </div>

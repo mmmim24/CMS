@@ -2,6 +2,31 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.sql.DriverManager" %>
+<%@ page import="java.sql.*" %>   
+<%
+String name=(String)request.getSession(false).getAttribute("Email");  
+//session name
+if(name==null) request.getRequestDispatcher("index.jsp").forward(request,response);
+try{
+	Class.forName("com.mysql.jdbc.Driver");
+    java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sql_workbench", "root", "");
+    String query = "SELECT  * FROM credentials where username=?";
+
+    PreparedStatement ps = con.prepareStatement(query);
+    ps.setString(1,name);
+    
+    ResultSet rs = ps.executeQuery();
+	while(rs.next()) {
+		String t = rs.getString("type");
+		if((t.equals("student")||t.equals("teacher"))){
+			request.getRequestDispatcher("index.jsp").forward(request,response);
+		}
+	}
+}catch(Exception e){
+	System.out.println(e);
+}
+%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,16 +42,12 @@
     <link rel="stylesheet" href="css/admin.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-<%
-String name=(String)request.getSession(false).getAttribute("Email");  
-//session name
-%>
 <body>
     <div class="container-fluid">
         <div class="row">
             <nav class="navbar navbar-dark bg-primary fixed-top">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="admin.html">Admin Dashboard</a>
+                    <a class="navbar-brand" href="admin.jsp">Admin Dashboard</a>
                     <a class="btn btn-light" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button"
                         aria-controls="offcanvasExample">
                         <i class="fas fa-user"></i>
@@ -93,8 +114,13 @@ String name=(String)request.getSession(false).getAttribute("Email");
                     This is the Admin profile overview tab. It also contains the options to logout or edit the profile.
                 </div>
                 <div class="list-group mt-4">
-                    <a href="index.html" class="list-group-item list-group-item-action list-group-item-danger"><i class="fas fa-sign-out-alt"></i> Logout</a>
-                    <a href="editProfile.jsp" class="list-group-item list-group-item-action list-group-item-warning"><i class="fas fa-user-cog"></i> Edit Profile</a>
+                <form action="logout" method="post">
+                	<button class="btn btn-danger w-100" type="submit" value="Logout"><i class="fas fa-sign-out-alt"></i> Logout</button>
+                </form>
+                <br>
+                <form>
+                    <a href="editProfile.jsp" class="btn btn-warning w-100"><i class="fas fa-user-cog"></i> Edit Profile</a>
+                </form>
                 </div>
             </div>
         </div>

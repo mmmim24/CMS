@@ -75,7 +75,8 @@ public class Login extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
+		doPost(request,response);
 	}
 
 	/**
@@ -86,6 +87,8 @@ public class Login extends HttpServlet {
 		response.setContentType("text/html");
         PrintWriter out = response.getWriter();
         //user and password fetching from input
+        String ses = (String)request.getSession(false).getAttribute("Email");
+        if(ses==null) request.getRequestDispatcher("student.jsp").forward(request,response);        
         String user = request.getParameter("email");
         String pass = request.getParameter("password");
    
